@@ -47,11 +47,11 @@ resource "google_project_iam_member" "bq-scheduled-query-sa-iam" {
 }
 
 
-# data "google_project" "project" {}
+data "google_project" "project" {}
 
 resource "google_project_iam_member" "permissions" {
   role   = "roles/iam.serviceAccountTokenCreator"
-  project_number = "778979178320"
+  project_number = data.google_project.project.number
   member = "serviceAccount:service-${project_number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com"
 }
 

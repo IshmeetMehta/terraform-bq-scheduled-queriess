@@ -50,7 +50,7 @@ resource "google_project_iam_member" "bq-scheduled-query-sa-iam" {
 data "google_project" "project" {}
 
 resource "google_project_iam_member" "permissions" {
-  role   = "roles/iam.serviceAccountShortTermTokenMinter"
+  role   = "roles/iam.serviceAccountTokenCreator"
   member = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com"
 }
 

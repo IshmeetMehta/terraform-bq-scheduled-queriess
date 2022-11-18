@@ -1,7 +1,7 @@
 .ONESHELL:
 	SHELL := /bin/bash
 
-TF_STATE_BUCKET=derrickq-tfstate
+TF_STATE_BUCKET=tf-state-prod13
 
 validate:
 	@for i in $$(find . -type f -name "*.tf" -exec dirname {} \;); do \

@@ -49,11 +49,11 @@ resource "google_project_iam_member" "bq-scheduled-query-sa-iam" {
   member     = "serviceAccount:${google_service_account.bq-scheduled-query-sa.email}"
 }
 
-resource "google_project_iam_member" "permissions" {
-  role   = "roles/iam.serviceAccountTokenCreator"
-  project = data.google_project.project.project_id
-  member = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com"
-}
+# resource "google_project_iam_member" "permissions" {
+#   role   = "roles/iam.serviceAccountTokenCreator"
+#   project = data.google_project.project.project_id
+#   member = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com"
+# }
 
 # create a scheduled query
 resource "google_bigquery_data_transfer_config" "query_config" {

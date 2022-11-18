@@ -57,7 +57,7 @@ resource "google_service_account" "bq-scheduled-query-sa" {
 
 # create a scheduled query
 resource "google_bigquery_data_transfer_config" "query_config" {
-  depends_on = [google_project_iam_member.permissions, google_project_iam_member.bq-scheduled-query-sa-iam]
+#   depends_on = [google_project_iam_member.permissions, google_project_iam_member.bq-scheduled-query-sa-iam]
 
   display_name           = "my-query"
   location               = "US"

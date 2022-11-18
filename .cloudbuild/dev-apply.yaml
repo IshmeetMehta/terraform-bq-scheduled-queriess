@@ -1,6 +1,6 @@
 steps:
 - id: 'Terraform apply - Dev'
-  name: 'hashicorp/terraform:1.0.0'
+  name: 'hashicorp/terraform:1.1.9'
   entrypoint: 'sh'
   args: 
   - '-c'

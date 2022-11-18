@@ -52,7 +52,7 @@ resource "google_project_iam_member" "bq-scheduled-query-sa-iam" {
 resource "google_project_iam_member" "permissions" {
   role   = "roles/iam.serviceAccountTokenCreator"
   project_number = "778979178320"
-  member = "serviceAccount:service-${project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com"
+  member = "serviceAccount:service-${project_number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com"
 }
 
 # create a scheduled query

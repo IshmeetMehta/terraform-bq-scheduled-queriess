@@ -1,5 +1,5 @@
 provider "google" {
-  project = var.project_id
+  project = "${var.project_id}"
 }
 
 # create a test dataset
@@ -51,7 +51,8 @@ data "google_project" "project" {}
 
 resource "google_project_iam_member" "permissions" {
   role   = "roles/iam.serviceAccountTokenCreator"
-  member = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com"
+  project_number = data.google_project.project.number
+  member = "serviceAccount:service-${project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com"
 }
 
 # create a scheduled query

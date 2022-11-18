@@ -41,19 +41,19 @@ resource "google_service_account" "bq-scheduled-query-sa" {
   display_name = "A service account to run bq scheduled query"
 }
 
-# grant bigquery admin role to the service account so that scheduled query can run
-resource "google_project_iam_member" "bq-scheduled-query-sa-iam" {
-  depends_on = [google_service_account.bq-scheduled-query-sa]
-  project    = "${var.project_id}"
-  role       = "roles/bigquery.admin"
-  member     = "serviceAccount:${google_service_account.bq-scheduled-query-sa.email}"
-}
+# # grant bigquery admin role to the service account so that scheduled query can run
+# resource "google_project_iam_member" "bq-scheduled-query-sa-iam" {
+#   depends_on = [google_service_account.bq-scheduled-query-sa]
+#   project    = "${var.project_id}"
+#   role       = "roles/bigquery.admin"
+#   member     = "serviceAccount:${google_service_account.bq-scheduled-query-sa.email}"
+# }
 
-resource "google_project_iam_member" "permissions" {
-  role   = "roles/iam.serviceAccountTokenCreator"
-  project = data.google_project.project.project_id
-  member = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com"
-}
+# resource "google_project_iam_member" "permissions" {
+#   role   = "roles/iam.serviceAccountTokenCreator"
+#   project = data.google_project.project.project_id
+#   member = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com"
+# }
 
 # create a scheduled query
 resource "google_bigquery_data_transfer_config" "query_config" {
@@ -61,7 +61,7 @@ resource "google_bigquery_data_transfer_config" "query_config" {
 
   display_name           = "my-query"
   location               = "US"
-  service_account_name   = google_service_account.bq-scheduled-query-sa.email
+#   service_account_name   = google_service_account.bq-scheduled-query-sa.email
   data_source_id         = "scheduled_query"
   schedule               = "${var.schedule}"
   destination_dataset_id = google_bigquery_dataset.test_dataset.dataset_id

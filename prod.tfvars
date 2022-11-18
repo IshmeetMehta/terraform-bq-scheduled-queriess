@@ -1,4 +1,4 @@
-project_id = "my-prod-project"
+project_id = "tech-summit2022"
 dataset_id = "test_dataset"
 source_table = "test_table"
 target_table = "scheduled_table"

@@ -1,9 +1,11 @@
 variable "project_id" {
     type = string
+    default = "tech-summit2022"
 }
 
 variable "project" {
     type = string
+    default = "tech-summit2022"
 }
 
 variable "dataset_id" {

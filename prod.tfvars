@@ -1,5 +1,5 @@
-project_id = "tech-summit2022"
-project = "tech-summit2022"
+project_id = "live-person-project"
+project = "live-person-project"
 dataset_id = "test_dataset"
 source_table = "test_table"
 target_table = "scheduled_table"

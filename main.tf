@@ -51,7 +51,6 @@ data "google_project" "project" {}
 
 resource "google_project_iam_member" "permissions" {
   role   = "roles/iam.serviceAccountTokenCreator"
-  project_number = data.google_project.project.number
   member = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com"
 }
 

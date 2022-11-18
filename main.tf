@@ -2,6 +2,9 @@ provider "google" {
   project = "${var.project_id}"
 }
 
+
+data "google_project" "project" {}
+
 # create a test dataset
 resource "google_bigquery_dataset" "test_dataset" {
   dataset_id  = "${var.dataset_id}"
@@ -46,11 +49,9 @@ resource "google_project_iam_member" "bq-scheduled-query-sa-iam" {
   member     = "serviceAccount:${google_service_account.bq-scheduled-query-sa.email}"
 }
 
-
-data "google_project" "project" {}
-
 resource "google_project_iam_member" "permissions" {
   role   = "roles/iam.serviceAccountTokenCreator"
+  project = data.google_project.project.project_id
   member = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com"
 }
 

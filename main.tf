@@ -1,5 +1,5 @@
 provider "google" {
-  project = "tech-summit2022"
+  project = "${var.project_id}"
 }
 
 # create a test dataset
